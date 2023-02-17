@@ -7,13 +7,14 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
-mongoose.connect('mongodb+srv://jnmpadi:cyberpunk2077@school-management-proje.eunexii.mongodb.net/?retryWrites=true&w=majority', {
+mongoose.createConnection('mongodb+srv://jnmpadi:cyberpunk2077@school-management-clust.4kxczqq.mongodb.net/?retryWrites=true&w=majority', {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
+    useUnifiedTopology: true
+}).then(() => {
+    console.log('MongoDB Connected');
+}).catch(err => {
+    console.log(err);
 });
-
-mongoose.set('strictQuery', false);
 
 const studentSchema = new mongoose.Schema({
     name: { type: String, required: true },
@@ -23,8 +24,6 @@ const studentSchema = new mongoose.Schema({
 });
 
 const Student = mongoose.model('Student', studentSchema);
-
-
 
 app.get('/students/:id', async (req, res) => {
     try {
@@ -52,8 +51,6 @@ app.post('/students', async (req, res) => {
         res.status(500).send({ error: error.message });
     }
 });
-
-
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server listening on port ${port}`));
