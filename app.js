@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-mongoose.connect('mongodb+srv://jnmpadi:cyberpunk2077@school-management-syste.9r5xgmk.mongodb.net/?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://jnmpadi:cyberpunk2077@school-management-proje.eunexii.mongodb.net/?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
